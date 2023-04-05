@@ -28,8 +28,8 @@ function Order({id ,amount , amountShipping,items,timestamp,images}) {
         <div className='p-5 sm:p-10'>
             <div className='flex space-x-6 overflow-x-auto'>
                 {
-                    images.map(image => (
-                        <img src={image} alt="" className=' sm:h-32 h-20 object-contain '/>
+                    images.map((image,index) => (
+                        <img key={Math.random() + index} src={image} alt="" className=' sm:h-32 h-20 object-contain '/>
                     ))
                 }
             </div>

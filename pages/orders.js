@@ -6,9 +6,8 @@ import moment from 'moment/moment'
 import { getSession, useSession } from 'next-auth/react'
 import React from 'react'
 
-function orders({orders}) {
+function Orders({orders}) {
     const { data: session } = useSession()
-    console.log(orders)
   return (
     <div>
         <Header/>
