@@ -16,7 +16,7 @@ function Orders({orders}) {
             <h1 className="text-3xl border-b mb-2 pb-1 border-yellow-400">Your Orders</h1>
             {
                 session ? (
-                    <h2>x Orders</h2>
+                    <h2>{orders.length} Orders</h2>
                 ) : (
                     <h2>Please sign to see you orders</h2>
                 )
