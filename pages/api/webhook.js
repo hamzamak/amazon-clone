@@ -15,7 +15,7 @@ const app = !admin.apps.length ? admin.initializeApp({
 
 
 const fulfilOrder = async (session)=> {
-     console.log("fulfillment order : " + session.id);
+  //   console.log("fulfillment order : " + session.id);
     
     return app.firestore().
      collection('users').doc(session.metadata.email)
