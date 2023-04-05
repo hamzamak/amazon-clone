@@ -8,9 +8,20 @@ import * as admin from "firebase-admin"
 
 // secure connection to firebase from backend
 const serviceAccount = require("../../permissions.json");
+const Mustache = require('mustache');
+
+
+// Replace the placeholders with actual values
+const renderedConfig = Mustache.render(serviceAccount, {
+
+  CLIENT_ID: process.env.CLIENT_ID,
+  PRIVATE_KEY: process.env.PRIVATE_KEY,
+  PRIVATE_KEY_ID: process.env.PRIVATE_KEY_ID,
+});
+
 
 const app = !admin.apps.length ? admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(renderedConfig)
 }) : admin.app();
 
 
