@@ -33,7 +33,7 @@ function Orders({orders}) {
   )
 }
 
-export default orders
+export default Orders
 
 // in getServerSideProps  we write a server code think like you are work with node
 export async function getServerSideProps (context){
