@@ -31,7 +31,7 @@ function CheckoutProduct({ id, title, description, category, image, price, ratin
                 </div>
                 <p className='text-xs my-2 line-clamp-3'>{description} </p>
                 <div className="mb-5">
-                    ${price}
+                    £{price}
                 </div>
                 {
                     hasPrime && (
