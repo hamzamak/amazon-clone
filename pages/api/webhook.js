@@ -12,16 +12,16 @@ const Mustache = require('mustache');
 
 
 // Replace the placeholders with actual values
-const renderedConfig = Mustache.render(serviceAccount, {
+const renderedConfig = Mustache.render(JSON.stringify(serviceAccount), {
 
   CLIENT_ID: process.env.CLIENT_ID,
   PRIVATE_KEY: process.env.PRIVATE_KEY,
-  PRIVATE_KEY_ID: process.env.PRIVATE_KEY_ID,
+  PRIVATE_KEY_ID: process.env.PRIVATE_KEY_ID
 });
 
 
 const app = !admin.apps.length ? admin.initializeApp({
-  credential: admin.credential.cert(renderedConfig)
+  credential: admin.credential.cert(JSON.parse(renderedConfig))
 }) : admin.app();
 
 

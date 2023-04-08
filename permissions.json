@@ -3,7 +3,7 @@
   "project_id": "clone-34ab8",
   "private_key_id" : "{{PRIVATE_KEY_ID}}",
   "private_key": "{{PRIVATE_KEY}}",
-  "client_email": "firebase-adminsdk-zrvck@clone-34ab8.iam.gserviceaccount.com",
+  "client_email": "{{CLIENT_EMAIL}}",
   "client_id": "{{CLIENT_ID}}",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
