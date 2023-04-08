@@ -9,16 +9,28 @@ import * as admin from "firebase-admin"
 // secure connection to firebase from backend
 const serviceAccount = require("../../permissions.json");
 const Mustache = require('mustache');
+//const fs = require('fs');
 
+// Read the JSON file
+//const jsonFile = fs.readFileSync('../../permissions.json', 'utf8');
+//const jsonData = JSON.parse(jsonFile);
+
+// Define the Mustache template
+const template = JSON.stringify(serviceAccount);
 
 // Replace the placeholders with actual values
-const renderedConfig = Mustache.render(JSON.stringify(serviceAccount), {
-
+const replacements = {
+    
   CLIENT_ID: process.env.CLIENT_ID,
   PRIVATE_KEY: process.env.PRIVATE_KEY,
-  PRIVATE_KEY_ID: process.env.PRIVATE_KEY_ID
-});
+  PRIVATE_KEY_ID: process.env.PRIVATE_KEY_ID,
+  CLIENT_EMAIL: process.env.CLIENT_EMAIL,
+  };
+  
+const renderedConfig = Mustache.render(template, replacements);
 
+
+//console.log(JSON.parse(renderedConfig))
 
 const app = !admin.apps.length ? admin.initializeApp({
   credential: admin.credential.cert(JSON.parse(renderedConfig))
@@ -26,7 +38,7 @@ const app = !admin.apps.length ? admin.initializeApp({
 
 
 const fulfilOrder = async (session)=> {
-  //   console.log("fulfillment order : " + session.id);
+     console.log("fulfillment order : " + session.id);
     
     return app.firestore().
      collection('users').doc(session.metadata.email)
